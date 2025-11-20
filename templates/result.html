@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <div class="result-hero">
+    <div class="result-card">
+      <h1>Prediction</h1>
+      <div class="result-body">
+        <div class="image-pane">
+          <img src="{{ image_url }}" alt="Input image">
+        </div>
+        <div class="pred-pane">
+          <h2>Predicted Number</h2>
+          <div class="pred-digit">{{ label }}</div>
+          <a href="{{ url_for('index') }}" class="btn btn-primary">Try Another</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

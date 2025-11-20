@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Handwritten Number Recognizer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="hero">
+  <header class="header">
+    <h1>Handwritten Number Recognizer</h1>
+    <p class="subtitle">Upload or Draw (multi-digit supported). Draw white on black.</p>
+  </header>
+
+  <main class="main">
+    <section class="card upload-card">
+      <div class="card-top">
+        <h2>Upload Image</h2>
+        <p class="muted">PNG/JPG</p>
+      </div>
+      <form action="/predict" method="POST" enctype="multipart/form-data">
+        <label class="dropzone">
+          <input type="file" name="file" accept="image/*" required>
+          <div class="drop-inner">
+            <span class="big-icon">⬆️</span>
+            <span class="drop-text">Click to upload an image containing digits</span>
+          </div>
+        </label>
+        <button type="submit" class="btn btn-primary">Predict Uploaded Image</button>
+      </form>
+    </section>
+
+    <section class="card draw-card">
+      <div class="card-top">
+        <h2>Draw Number</h2>
+        <p class="muted">Draw white strokes on a black canvas. Multi-stroke OK.</p>
+      </div>
+      <div class="canvas-wrap">
+        <canvas id="drawArea" width="400" height="200"></canvas>
+        <div class="canvas-controls">
+          <button id="clear-btn" class="btn btn-ghost">Clear</button>
+          <button id="predict-draw-btn" class="btn btn-primary">Predict Drawing</button>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
